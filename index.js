@@ -1,9 +1,12 @@
 const express = require('express')
 const app = express()
-const router = require('./routes/home') // <--
+const homeRouter = require('./routes/home')
+const authRouter = require('./routes/auth')
 
+app.use(express.json())
+app.use('/', homeRouter) 
+app.use('/', authRouter) 
 
-app.use('/', router) // <--
 
 app.listen(3000, function () {
     console.log(`Running on port 3000`)
